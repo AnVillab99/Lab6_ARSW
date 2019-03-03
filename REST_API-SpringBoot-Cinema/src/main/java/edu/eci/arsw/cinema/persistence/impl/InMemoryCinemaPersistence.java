@@ -95,8 +95,9 @@ public class InMemoryCinemaPersistence implements CinemaPersitence {
 		try {
 			c = getCinema(cinema);
 		} catch (CinemaPersistenceException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
+			return;
 		}
 		for (CinemaFunction f : c.getFunctions()) {
 			if (f.getMovie().getName().equals(movieName) && f.getDate().equals(date)) {
@@ -114,11 +115,14 @@ public class InMemoryCinemaPersistence implements CinemaPersitence {
 			try {
 				c = getCinema(cinema);
 			} catch (CinemaPersistenceException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
+				
+				return null;
 			}
 			for (CinemaFunction f : c.getFunctions()) {
-				if (f.getDate().equals(date)) {
+				
+				if (f.getDate().equals(date) || f.getDate().substring(0,10).equals(date)) {
 					cf.add(f);
 				}
 			}

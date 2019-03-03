@@ -6,6 +6,7 @@
 package edu.eci.arsw.cinema.controllers;
 
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.eci.arsw.cinema.model.Cinema;
+import edu.eci.arsw.cinema.model.CinemaFunction;
 import edu.eci.arsw.cinema.persistence.CinemaException;
 import edu.eci.arsw.cinema.persistence.CinemaPersistenceException;
 import edu.eci.arsw.cinema.services.CinemaServices;
@@ -57,6 +59,38 @@ public class CinemaAPIController {
 		} catch (CinemaPersistenceException e) {
 			re= new ResponseEntity<>(HttpStatus.NOT_FOUND);		
 			e.printStackTrace();
+		}
+		return re;
+		
+	        // ...
+	    }
+	 @GetMapping("/{name}/{date}")
+	 public ResponseEntity<?> manejadorGetRecurso(@PathVariable String name,@PathVariable String date) {
+		 ResponseEntity<?> re = null;
+		
+			re= new ResponseEntity<>(cs.getFunctionsbyCinemaAndDate(name, date),HttpStatus.ACCEPTED);
+		if(re.equals(null)) {
+			re= new ResponseEntity<>("No hay funcciones en ese cinema en esa fecha",HttpStatus.NOT_FOUND);		
+			
+		}
+		return re;
+		
+	        // ...
+	    }
+	 
+	 @GetMapping("/{name}/{date}/{moviename}")
+	 public ResponseEntity<?> manejadorGetRecurso(@PathVariable String name,@PathVariable String date,@PathVariable String moviename) {
+		 ResponseEntity<?> re = null;
+		
+			List<CinemaFunction> cf= cs.getFunctionsbyCinemaAndDate(name, date);
+			for(CinemaFunction f:cf) {
+				if(f.getMovie().getName().equals(moviename)) {
+					re=new ResponseEntity<>(f.getMovie(),HttpStatus.ACCEPTED);
+				}
+			}
+		if(re.equals(null)) {
+			re= new ResponseEntity<>("No hay funcciones en ese cinema en esa fecha",HttpStatus.NOT_FOUND);		
+			
 		}
 		return re;
 		

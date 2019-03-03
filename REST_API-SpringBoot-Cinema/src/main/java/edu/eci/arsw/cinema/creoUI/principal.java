@@ -51,9 +51,9 @@ public class principal {
 			
 			
 			System.out.println("               Consultar cine ");
-			Map<String, Cinema> cines = cs.getAllCinemas();
-			for (String ci : cines.keySet()) {
-				System.out.println(cines.get(ci).getName());
+			List<Cinema> cines = cs.getAllCinemas();
+			for (Cinema ci : cines) {
+				System.out.println(ci.getName());
 			}
 
 			System.out.println("               Obtener funciones por la fecha");
