@@ -80,6 +80,15 @@ public class CinemaServices {
 		return cps.filter(cinema, date, filter);
 	    
 	}
+
+	public void registerFunctionInCinema(String c,CinemaFunction cf)throws CinemaPersistenceException  {
+		cps.registerFunctionInCinema(c,cf);
+		
+	}
+	
+	public void updateFunction(String c,CinemaFunction cf)throws CinemaPersistenceException {
+		cps.updateFunction(c, cf);
+	}
 	
 
 }
