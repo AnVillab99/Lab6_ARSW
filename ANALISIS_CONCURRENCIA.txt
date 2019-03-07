@@ -1,0 +1,12 @@
+Qué condiciones de carrera se podrían presentar?
+*Unos usuarios queriendo saber cual es la pelicula, fecha, o las sillas disponibles de una funcione, mientras otros intentan cambiar esta informacion o comprar sillas 
+*usuarios acceder a la informacion de un cinema y otros tratando de cambiar dicho cinma
+
+Cuales son las respectivas regiones críticas? (y como se arreglo)
+*pelicula de una funcion(inmutable y final)
+*asientos de una funcion(metodo sincronizado)
+*fecha de una funcion(inmutable y final)
+*genero de la pelicula de una funcion(inmutable y final)
+*funciones de un cinema(metodo sincronizado)
+*lista de cinemas(metodo sincronizado)
+

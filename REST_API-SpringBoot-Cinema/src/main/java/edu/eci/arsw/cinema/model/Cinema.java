@@ -12,11 +12,11 @@ import java.util.List;
  * @author cristian
  */
 public class Cinema {
-    private String name;
+    private final String name;
     private List<CinemaFunction> functions; 
     
     
-    public Cinema(){}
+   
     
     public Cinema(String name,List<CinemaFunction> functions){
         this.name=name;
@@ -27,19 +27,19 @@ public class Cinema {
         return name;
     }
 
-    public void setName(String name) {
+   /*public void setName(String name) {
         this.name = name;
-    }
+    }*/
 
     public List<CinemaFunction> getFunctions() {
         return this.functions;
     }
 
-    public void setSchedule(List<CinemaFunction> functions) {
+    /*public void setSchedule(List<CinemaFunction> functions) {
         this.functions = functions;
-    }
+    }*/
     
-    public void registerFunction(CinemaFunction cf) {
+    public synchronized void registerFunction(CinemaFunction cf) {
     	functions.add(cf);
     	
     }

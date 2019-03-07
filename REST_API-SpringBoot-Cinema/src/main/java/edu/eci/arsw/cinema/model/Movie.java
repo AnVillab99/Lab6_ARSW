@@ -10,10 +10,10 @@ package edu.eci.arsw.cinema.model;
  * @author cristian
  */
 public class Movie {
-    private String name;
-    private String genre;
+    private final String name;
+    private final String genre;
     
-    public Movie(){}
+    
     
     public Movie(String name, String genre){
         this.name=name;
@@ -24,15 +24,15 @@ public class Movie {
         return name;
     }
 
-    public void setName(String name) {
+    /*public void setName(String name) {
         this.name = name;
-    }
+    }*/
 
     public String getGenre() {
         return genre;
     }
 
-    public void setGenre(String genre) {
+    /*public void setGenre(String genre) {
         this.genre = genre;
-    }
+    }*/
 }

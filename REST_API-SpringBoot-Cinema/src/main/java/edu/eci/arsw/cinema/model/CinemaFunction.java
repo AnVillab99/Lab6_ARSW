@@ -17,11 +17,11 @@ import java.util.List;
  */
 public class CinemaFunction {
     
-    private Movie movie;
+    private final Movie movie;
     private List<List<Boolean>> seats=new ArrayList<>();
-    private String date;
+    private final String date;
     
-    public CinemaFunction(){}
+    
     
     public CinemaFunction(Movie movie, String date){
         this.movie=movie;
@@ -33,7 +33,7 @@ public class CinemaFunction {
         }
     }
     
-    public void buyTicket(int row,int col) throws CinemaException{
+    public synchronized void buyTicket(int row,int col) throws CinemaException{
         if (seats.get(row).get(col).equals(true)){
             seats.get(row).set(col,Boolean.FALSE);
         }
@@ -50,17 +50,17 @@ public class CinemaFunction {
         return movie;
     }
 
-    public void setMovie(Movie movie) {
+    /*public void setMovie(Movie movie) {
         this.movie = movie;
-    }
+    }*/
 
     public String getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    /*public void setDate(String date) {
         this.date = date;
-    }
+    }*/
     
     
     
